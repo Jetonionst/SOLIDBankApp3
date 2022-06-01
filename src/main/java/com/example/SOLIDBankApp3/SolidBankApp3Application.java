@@ -1,6 +1,7 @@
 package com.example.SOLIDBankApp3;
 
 import com.example.SOLIDBankApp3.entity.cli.AccountBasicCLI;
+import com.example.SOLIDBankApp3.entity.cli.TransactionBasicCLI;
 import com.example.SOLIDBankApp3.entity.cli.TransactionDepositCLI;
 import com.example.SOLIDBankApp3.entity.cli.TransactionWithdrawCLI;
 import com.example.SOLIDBankApp3.service.MyCLI;
@@ -26,6 +27,7 @@ public class SolidBankApp3Application implements CommandLineRunner {
 
 		MyCLI myCLI = context.getBean(MyCLI.class);
 		AccountBasicCLI accountBasicCLI = context.getBean(AccountBasicCLI.class);
+		TransactionBasicCLI transactionBasicCLI = context.getBean(TransactionBasicCLI.class);
 		TransactionDepositCLI transactionDepositCLI = context.getBean(TransactionDepositCLI.class);
 		TransactionWithdrawCLI transactionWithdrawCLI = context.getBean(TransactionWithdrawCLI.class);
 
@@ -36,11 +38,11 @@ public class SolidBankApp3Application implements CommandLineRunner {
 		while(running){
 			switch(myCLI.getScanner().nextLine()){
 				case "1":
-					accountBasicCLI.getAccounts("1");
+					accountBasicCLI.getAccounts(clientID);
 					break;
 				case "2":
 					System.out.println("Choose account type: \n[CHECKING, SAVING, FIXED]");
-					accountBasicCLI.createAccountRequest("1");
+					accountBasicCLI.createAccountRequest(clientID);
 					break;
 				case "3":
 					transactionDepositCLI.depositMoney(clientID);
@@ -49,8 +51,8 @@ public class SolidBankApp3Application implements CommandLineRunner {
 					transactionWithdrawCLI.withdrawMoney(clientID);
 					break;
 				case "5":
-					System.out.println("Transfer has not been released yet.");
-					//accountBasicCLI.getTransactions();
+					//System.out.println("Transfer has not been released yet.");
+					transactionBasicCLI.getClientTransactions(clientID);
 					break;
 				case "6":
 					System.out.printf(helpMessage);

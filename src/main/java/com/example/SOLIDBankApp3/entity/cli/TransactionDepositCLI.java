@@ -26,6 +26,6 @@ public class TransactionDepositCLI{
         }
         System.out.println("Enter amount to deposit: ");
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
-        transactionDeposit.execute(account, amount);
-    };
+        transactionDeposit.execute(account.getId(), amount);
+    }
 }

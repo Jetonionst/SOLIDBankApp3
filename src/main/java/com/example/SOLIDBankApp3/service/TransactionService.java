@@ -3,7 +3,10 @@ package com.example.SOLIDBankApp3.service;
 import com.example.SOLIDBankApp3.entity.account.Account;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public interface AccountDepositService {
-    void deposit(double amount, String accountID);
+public interface TransactionService {
+    List<String> getClientTransactions(String clientID);
+
 }

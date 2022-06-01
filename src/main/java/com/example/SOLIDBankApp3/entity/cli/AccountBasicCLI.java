@@ -6,8 +6,7 @@ import com.example.SOLIDBankApp3.service.BankCore;
 import org.springframework.stereotype.Component;
 
 @Component
-public
-class AccountBasicCLI{
+public class AccountBasicCLI{
     private CreateAccountOperationUI createAccountOperationUI;
     private BankCore bankCore;
     private AccountListingService accountListingService;
@@ -19,13 +18,9 @@ class AccountBasicCLI{
     }
 
     public void createAccountRequest(String clientID){
-        bankCore.createNewAccount(createAccountOperationUI.requestAccountType(), clientID);
+        bankCore.createNewAccount(createAccountOperationUI.requestAccountType().name(), clientID);
     }
     public void getAccounts(String clientID){
         System.out.println(accountListingService.getClientAccounts(clientID));
-    }
-
-    public void getTransactions(){
-        System.out.println(accountListingService.getTransactions());
     }
 }

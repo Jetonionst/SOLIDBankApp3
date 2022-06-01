@@ -20,22 +20,22 @@ class AccountCreationServiceImpl implements AccountCreationService {
     }
 
     @Override
-    public void create(AccountType accountType, long bankID, String clientID, long accountID) {
+    public void create(String accountType, long bankID, String clientID, long accountID) {
         String accountNumber = String.format("%03d%06d", 1, accountID);
         Account account = null;
         switch (accountType) {
-            case FIXED:
+            case "FIXED":
                 account = new FixedAccount(accountNumber, clientID, 0, bankID);
                 break;
-            case SAVING:
+            case "SAVING":
                 account = new SavingAccount(accountNumber, clientID, 0, bankID);
                 break;
-            case CHECKING:
+            case "CHECKING":
                 account = new CheckingAccount(accountNumber, clientID, 0, bankID);
                 break;
         }
         //accountDAO.createNewAccount(account);
-        accountRepository.createNewAccount(account.getId(), accountType.name(), account.getClientID(), account.getBalance(), account.getBankID(), account.isWithdrawAllowed());
+        accountRepository.createNewAccount(account.getId(), accountType, account.getClientID(), account.getBalance(), account.getBankID(), account.isWithdrawAllowed());
         System.out.println("New Account was created!");
     }
 }

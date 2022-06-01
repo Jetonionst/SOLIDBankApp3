@@ -13,7 +13,7 @@ public class BankCore {
         this.accountCreation = accountCreationService;
     }
 
-    public void createNewAccount(AccountType accountType, String clientID) {
+    public void createNewAccount(String accountType, String clientID) {
         if (accountType == null) {
             System.out.println("There is no such account type!");
             return;

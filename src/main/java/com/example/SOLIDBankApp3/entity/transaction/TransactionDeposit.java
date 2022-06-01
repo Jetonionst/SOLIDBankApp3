@@ -14,7 +14,7 @@ public class TransactionDeposit {
         this.accountDepositService=accountDepositService;
         this.transactionDAO=transactionDAO;
     }
-    public void execute(Account account, double amount){
-        accountDepositService.deposit(amount, account);
+    public void execute(String accountID, double amount){
+        accountDepositService.deposit(amount, accountID);
     }
 }

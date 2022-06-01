@@ -26,6 +26,6 @@ public class TransactionWithdrawCLI{
         }
         System.out.println("Enter amount to withdraw: ");
         double amount = withdrawDepositOperationCLIUI.requestClientAmount();
-        transactionWithdraw.execute(account, amount);
+        transactionWithdraw.execute(account.getId(), amount);
     };
 }

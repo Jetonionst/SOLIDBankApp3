@@ -14,7 +14,7 @@ public class TransactionWithdraw {
         this.accountWithdrawService=accountWithdrawService;
         this.transactionDAO=transactionDAO;
     }
-    public void execute(Account account, double amount){
-        accountWithdrawService.withdraw(amount, account);
+    public void execute(String accountID, double amount){
+        accountWithdrawService.withdraw(amount, accountID);
     }
 }

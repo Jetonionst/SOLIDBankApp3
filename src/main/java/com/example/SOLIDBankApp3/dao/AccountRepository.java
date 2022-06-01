@@ -31,4 +31,8 @@ public interface AccountRepository extends CrudRepository<Account, String> {
 
     @Query("SELECT * FROM Account WHERE client_id = :clientID AND account_type = :accountType")
     List<Account> getClientAccountsByType(String clientID, AccountType accountType);
+
+    @Modifying
+    @Query("DELETE FROM Account WHERE client_id = :clientID AND id = :accountID")
+    void deleteAccount(String clientID, String accountID);
 }

@@ -16,6 +16,8 @@ public class Transaction {
 
     @Override
     public String toString() {
-        return transaction;
+        return "Transaction{" +
+                "transaction='" + transaction + '\'' +
+                '}';
     }
 }

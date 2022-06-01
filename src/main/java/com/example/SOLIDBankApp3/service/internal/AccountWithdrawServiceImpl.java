@@ -24,8 +24,9 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
     }
 
     @Override
-    public void withdraw(double amount, Account account) {
+    public void withdraw(double amount, String accountID) {
         //System.out.println(account.getAccountType());
+        Account account = accountRepository.getClientAccount("1", accountID);
         switch (account.getAccountType()) {
             case FIXED:
                 System.out.println("This is FIXED account! Withdraw is not allowed!");
@@ -39,7 +40,7 @@ public class AccountWithdrawServiceImpl implements AccountWithdrawService {
                     account.setBalance(balance - amount);
                     //accountDAO.updateNewAccount(account, newAccount);
                     accountRepository.updateNewAccount(account.getId(), account.getBalance());
-                    transactionRepository.createNewTransaction("Deposit transaction: " + "account - " + account.getId() + ", balance - " + account.getBalance());
+                    transactionRepository.createNewTransaction("Withdraw transaction: " + "account - " + account.getId() + ", amount - " + amount);
                     System.out.println("The amount was withdrawn!");
                 } else {
                     System.out.println("The amount exceeds the balance!");
